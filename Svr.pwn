@@ -31,14 +31,31 @@ WHAT IT DOES? : You can test any mapping code by yourself, anytime without GMX t
 #include "./inc/commands.inc"
 #include "./inc/callbacks.inc"
 #include "./inc/stocks.inc"
-#include "./inc/Dialogs.inc"
-#include "./inc/teleports.inc"
 
 
-public OnGameModeInit(){
-	return 1;
+
+main( ) { }
+
+public OnPlayerConnect(playerid){ return 1; }
+public OnPlayerDisconnect(playerid, reason){ return 1; }
+
+public OnGameModeInit()
+{
+
+  AddPlayerClass(0, -2299.2156, -1644.6145, 483.6988, 269.1425, 0, 0, 0, 0, 0, 0);
+  return 1;
 }
 
-public OnGameModeExit(){
-	return 1;
+public OnGameModeExit()
+{
+  return 1;
 }
+
+public OnPlayerRequestClass(playerid, classid)
+{
+  SetPlayerPos(playerid, -2299.2156, -1644.6145, 483.6988);
+  SetPlayerCameraPos(playerid, -2299.2156, -1644.6145, 483.6988);
+  SetPlayerCameraLookAt(playerid, -2299.2156, -1644.6145, 483.6988);
+  return 1;
+}
+
