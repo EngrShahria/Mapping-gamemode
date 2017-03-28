@@ -10,12 +10,7 @@ ___________              __
   |    |_/ __ \ /  ___/\   __\  /  ___/\  \/ /\_  __ \
   |    |\  ___/ \___ \  |  |    \___ \  \   /  |  | \/
   |____| \___  >____  > |__|   /____  >  \_/   |__|   
-             \/     \/              \/                
-
-             
-// My first test
-//yo yo troy check this working or nah
-
+             \/     \/              \/
 WHAT IT DOES? : You can test any mapping code by yourself, anytime without GMX the server or load manytimes.
  */
 
@@ -36,6 +31,8 @@ WHAT IT DOES? : You can test any mapping code by yourself, anytime without GMX t
 #include "./inc/commands.inc"
 #include "./inc/callbacks.inc"
 #include "./inc/stocks.inc"
+#include "./inc/Dialogs.inc"
+#include "./inc/teleports.inc"
 
 
 public OnGameModeInit(){

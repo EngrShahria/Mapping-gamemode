@@ -1,0 +1,1 @@
+#define TELEPORT_DIALOG 0
