@@ -33,3 +33,12 @@ CMD:setvw( playerid, params[] )
 	format(SCMstring, sizeof(SCMstring), "%s sets %s's virtual worlds to %d", GetPName(playerid), GetPName(trgID), vwID);
 	return 1;
 }
+
+CMD:setmyvw( playerid, params[] )
+{
+	new vwID;
+	if(sscanf(params, "d", vwID)) return SendClientMessage(playerid, -1, "/setmyvw [VW]");
+	if(!IsPlayerAdmin(playerid)) return SendClientMessage(playerid, -1, "You aren't an admin.");
+	SetPlayerVirtualWorld(playerid, vwID);
+	SendClientMessage(playerid, -1, "Your virtual World has been changed.");
+}
