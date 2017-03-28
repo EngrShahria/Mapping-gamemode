@@ -12,6 +12,10 @@ ___________              __
   |____| \___  >____  > |__|   /____  >  \_/   |__|   
              \/     \/              \/                
 
+             
+// My first test
+
+
 WHAT IT DOES? : You can test any mapping code by yourself, anytime without GMX the server or load manytimes.
  */
 
