@@ -8,7 +8,6 @@ stock TP_Player(playerid, destination)
 {
 	switch(destination)
 	{
-		case 0: SendClientMessage(playerid, -1, "Destination should be more than 1");
 		case 1: SetPlayerPos(playerid, 2468.8638, -1661.7458, 13.3261);
 		case 2: SetPlayerPos(playerid, 2225.0276, -1717.3409, 13.5068);
 		case 3: SetPlayerPos(playerid, 2089.5481, -1807.4532, 13.5469);
@@ -29,6 +28,7 @@ stock TP_Player(playerid, destination)
 		case 18: SetPlayerPos(playerid, 2035.0367, 1007.3993, 10.8203);
 		case 19: SetPlayerPos(playerid, 1934.3407, 2146.7466, 10.8203);
 		case 20: SetPlayerPos(playerid, 978.6031, 2299.8274, 10.8281);
+		default: SendClientMessage(playerid, -1, "Wrong destination ID");
 	}
 	return 1;
 }
