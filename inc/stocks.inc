@@ -38,3 +38,54 @@ stock GetPHealth(playerid)
 	GetPlayerHealth(playerid, iHP);
 	return iHP;
 }
+stock GetWepName(weaponid)
+{
+	new Wep_NAme[MAX_PLAYER_NAME];
+	switch(weaponid)
+	{
+		case 0: Wep_NAme="None";
+		case 1: Wep_NAme="Brass knuckles";
+		case 2: Wep_NAme="Golf club";
+		case 3: Wep_NAme="Night stick";
+		case 4: Wep_NAme="Knife";
+		case 5: Wep_NAme="Baseball bat";
+		case 6: Wep_NAme="Shovel";
+		case 7: Wep_NAme="Pool cue";
+		case 8: Wep_NAme="Katana";
+		case 9: Wep_NAme="Chainsaw";
+		case 10, 11: Wep_NAme="Dildo";
+		case 12, 13: Wep_NAme="Vibrator";
+		case 14: Wep_NAme="Flowers";
+		case 15: Wep_NAme="Cane";
+		case 16: Wep_NAme="Grenade";
+		case 17: Wep_NAme="Molotov";
+		case 18: Wep_NAme="Tear gas";
+		case 19,20,21: Wep_NAme="None";
+		case 22: Wep_NAme="Pistol";
+		case 23: Wep_NAme="Silenced Pistol";
+		case 24: Wep_NAme="Desert Eagle";
+		case 25: Wep_NAme="Shotgun";
+		case 26: Wep_NAme="Sawn-off shotgun";
+		case 27: Wep_NAme="Combat shotgun";
+		case 28: Wep_NAme="Micro UZI";
+		case 29: Wep_NAme="MP5";
+		case 30: Wep_NAme="AK-47";
+		case 31: Wep_NAme="M4A1";
+		case 32: Wep_NAme="Tec-9";
+		case 33: Wep_NAme="Country rifle";
+		case 34: Wep_NAme="Sniper rifle";
+		case 35: Wep_NAme="RPG";
+		case 36: Wep_NAme="Missle launcher";
+		case 37: Wep_NAme="Flame thrower";
+		case 38: Wep_NAme="Minigun";
+		case 39: Wep_NAme="Satchel charge";
+		case 40: Wep_NAme="Detonator";
+		case 41: Wep_NAme="Spray paint";
+		case 42: Wep_NAme="Fire extinguisher";
+		case 43: Wep_NAme="Camera";
+		case 44: Wep_NAme="Night vision goggles";
+		case 45: Wep_NAme="Thermal goggles";
+		case 46: Wep_NAme="Parachute";
+	}
+	return Wep_NAme;
+}

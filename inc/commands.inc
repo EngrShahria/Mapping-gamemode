@@ -3,6 +3,7 @@ new SCMstring[128];
 new GodMode[MAX_PLAYERS];
 ////////////////////////~~~~~Defines~~~~~/////////////////////
 #define TELEPORT_DIALOG 1
+#define WEAPON_DIALOG 2
 /////////////////////////~~~~~Commands~~~~~///////////////////
 CMD:gotocoords( playerid, params[] )
 {
@@ -78,7 +79,7 @@ CMD:teleport( playerid, params[] )
 	TP_Player(playerid, destination);
 	return 1;	
 }
-CMD:godmode(playerid, params[])
+CMD:godmode( playerid, params[] )
 {
 	if(!IsPlayerAdmin(playerid)) return SendClientMessage(playerid, -1, "[{fa1107}WARNING{ffffff}] You are not authorized to use this command");	//Checking if the player is a RCON admin or not//
 	switch(GodMode[playerid])
@@ -96,5 +97,56 @@ CMD:godmode(playerid, params[])
 		    }
 	}
 	SCM(playerid, -1, SCMstring);
+	return 1;
+}
+CMD:giveweapon( playerid, params[] )
+{
+    if(!IsPlayerAdmin(playerid)) return SendClientMessage(playerid, -1, "[{fa1107}WARNING{ffffff}] You are not authorized to use this command");	//Checking if the player is a RCON admin or not//
+    new targetID;
+    if(sscanf(playerid, "u", targetID)) return SendClientMessage(playerid, -1, "[{fa1107}USAGE{ffffff}] /giveweapon <targetID>");
+    SetPVarInt(playerid, "targetid", targetID);
+    ShowPlayerDialog(playerid, WEAPON_DIALOG, DIALOG_STYLE_LIST,
+    "1. Brass Knuckles\n\
+	 2. Golf Club\n\
+	 3. Night Club\n\
+	 4. Knife\n\
+	 5. Baseball Bat\n\
+	 6. Shovel\n\
+	 7. Pool Cue\n\
+	 8. Katana\n\
+	 9. Chainsaw\n\
+	 10. Dildo\n\
+	 11. Vibrator\n\
+	 12. Flowers\n\
+	 13. Cane\n\
+	 14. Grenade\n\
+	 15. Molotov\n\
+	 16. Tear Gas\n\
+	 17. Pistol\n\
+	 18. Silenced Pistol\n\
+	 19. Desert Eagle\n\
+	 20. Shotgun\n\
+	 21. Sawn-off Shotgun\n\
+	 22. Combat Shotgun\n\
+	 23. Micro-UZI\n\
+	 24. MP5\n\
+	 25. AK-47\n\
+	 26. M4A1\n\
+	 27. Tec-9\n\
+	 28. Country rifle\n\
+	 29. Sniper rifle\n\
+	 30. RPG\n\
+	 31. Missle Launcher\n\
+	 32. Flame Thrower\n\
+	 33. Minigun\n\
+	 34. Satchel Charge\n\
+	 35. Detonator\n\
+	 36. Spray Paint\n\
+	 37. Fire Extinguisher\n\
+	 38. Camera\n\
+	 39. Night Vision goggles\n\
+	 40. Thermal goggles\n\
+	 41. Parachute",\
+	 "Ok", "Cancel");
 	return 1;
 }
