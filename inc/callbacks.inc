@@ -22,7 +22,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		                case 11 .. 15: weaponID=listitem+3;
 		                case 16 .. 40: weaponID=listitem+6;
 		            }
-		            GivePlayerWeapon(playerid, weaponID, 100);
+		            GivePlayerWeapon(targetID, weaponID, 100);
 		            format(SCMstring, sizeof(SCMstring), "[{f24faa}SERVER{ffffff}] You have given %s a %s", GetPName(targetID), GetWepName(weaponID));
 		            SendClientMessage(playerid, -1, SCMstring);
 		            format(SCMstring, sizeof(SCMstring), "[{f24faa}SERVER{ffffff}] You were given a %s by %s", GetWepName(weaponID), GetPName(playerid));
