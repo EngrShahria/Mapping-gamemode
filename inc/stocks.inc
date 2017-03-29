@@ -32,3 +32,9 @@ stock TP_Player(playerid, destination)
 	}
 	return 1;
 }
+stock GetPHealth(playerid)
+{
+	new Float:iHP;
+	GetPlayerHealth(playerid, iHP);
+	return iHP;
+}

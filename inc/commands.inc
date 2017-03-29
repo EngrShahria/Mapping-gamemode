@@ -1,5 +1,9 @@
+////////////////~~~~~Class Variables~~~~~//////////////////////
 new SCMstring[128];
-
+new GodMode[MAX_PLAYERS];
+////////////////////////~~~~~Defines~~~~~/////////////////////
+#define TELEPORT_DIALOG 1
+/////////////////////////~~~~~Commands~~~~~///////////////////
 CMD:gotocoords( playerid, params[] )
 {
 	new Float:x,
@@ -43,7 +47,6 @@ CMD:setmyvw( playerid, params[] )
 	SendClientMessage(playerid, -1, "Your virtual World has been changed.");
 	return 1;
 }
-#define TELEPORT_DIALOG 1
 CMD:teleport( playerid, params[] )
 {
 
@@ -74,4 +77,24 @@ CMD:teleport( playerid, params[] )
 			 ", "Ok", "");
 	TP_Player(playerid, destination);
 	return 1;	
+}
+CMD:godmode(playerid, params[])
+{
+	if(!IsPlayerAdmin(playerid)) return SendClientMessage(playerid, -1, "[{fa1107}WARNING{ffffff}] You are not authorized to use this command");	//Checking if the player is a RCON admin or not//
+	switch(GodMode[playerid])
+	{
+	    case 1:
+	        {
+	            GodMode[playerid]=0;
+	            format(SCMstring, sizeof(SCMstring), "[{fa1107}AdmCmd{ffffff}] You have disabled your GodMode");
+	        }
+		case 0:
+		    {
+		        SetPlayerHealth(playerid, 100.00);
+		        GodMode[playerid]=1;
+		        format(SCMstring, sizeof(SCMstring), "[{fa1107}AdmCmd{ffffff}] You have enabled your GodMode");
+		    }
+	}
+	SCM(playerid, -1, SCMstring);
+	return 1;
 }
