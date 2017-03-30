@@ -17,7 +17,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				if(strval(inputtext)<1||strval(inputtext)>46) SendClientMessage(playerid, -1, "[{fa1107}WARNING{ffffff}] Invalid Input");
 				switch(strval(inputtext))
 					case 11,13,19,20,21: SendClientMessage(playerid, -1, "[{fa1107}WARNING{ffffff}] Invalid Input");
-				if(!IsPlayerConnected(targetID))
+				if(IsPlayerConnected(targetID))
 					GivePlayerWeapon(targetID, strval(inputtext), 100);
 				new temp[5];
 				valstr(temp, targetID);
