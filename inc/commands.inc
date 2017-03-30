@@ -4,6 +4,9 @@ new GodMode[MAX_PLAYERS];
 ////////////////////////~~~~~Defines~~~~~/////////////////////
 #define TELEPORT_DIALOG 1
 #define WEAPON_DIALOG 2
+#if !defined isnull
+    #define isnull(%1) ((!(%1[0])) || (((%1[0]) == '\1') && (!(%1[1]))))
+#endif
 /////////////////////////~~~~~Commands~~~~~///////////////////
 CMD:gotocoords( playerid, params[] )
 {
@@ -103,9 +106,11 @@ CMD:giveweapon( playerid, params[] )
 {
     if(!IsPlayerAdmin(playerid)) return SendClientMessage(playerid, -1, "[{fa1107}WARNING{ffffff}] You are not authorized to use this command");	//Checking if the player is a RCON admin or not//
     new targetID;
-    if(sscanf(playerid, "u", targetID)) return SendClientMessage(playerid, -1, "[{fa1107}USAGE{ffffff}] /giveweapon <targetID>");
+    if(sscanf(params, "u", targetID)) return SendClientMessage(playerid, -1, "[{fa1107}USAGE{ffffff}] /giveweapon <targetID>");
+    if(!IsPlayerConnected(targetID)) return SendClientMessage(playerid, -1, "[{fa1107}WARNING{ffffff}] Could not find player.")
     SetPVarInt(playerid, "targetid", targetID);
-    ShowPlayerDialog(playerid, WEAPON_DIALOG, DIALOG_STYLE_LIST,
+    format(SCMstring, sizeof(SCMstring), "Giving weapon to %s", GetPName(targetID));
+    ShowPlayerDialog(playerid, WEAPON_DIALOG, DIALOG_STYLE_INPUT, SCMstring,
     "1. Brass Knuckles\n\
 	 2. Golf Club\n\
 	 3. Night Club\n\
@@ -116,37 +121,37 @@ CMD:giveweapon( playerid, params[] )
 	 8. Katana\n\
 	 9. Chainsaw\n\
 	 10. Dildo\n\
-	 11. Vibrator\n\
-	 12. Flowers\n\
-	 13. Cane\n\
-	 14. Grenade\n\
-	 15. Molotov\n\
-	 16. Tear Gas\n\
-	 17. Pistol\n\
-	 18. Silenced Pistol\n\
-	 19. Desert Eagle\n\
-	 20. Shotgun\n\
-	 21. Sawn-off Shotgun\n\
-	 22. Combat Shotgun\n\
-	 23. Micro-UZI\n\
-	 24. MP5\n\
-	 25. AK-47\n\
-	 26. M4A1\n\
-	 27. Tec-9\n\
-	 28. Country rifle\n\
-	 29. Sniper rifle\n\
-	 30. RPG\n\
-	 31. Missle Launcher\n\
-	 32. Flame Thrower\n\
-	 33. Minigun\n\
-	 34. Satchel Charge\n\
-	 35. Detonator\n\
-	 36. Spray Paint\n\
-	 37. Fire Extinguisher\n\
-	 38. Camera\n\
-	 39. Night Vision goggles\n\
-	 40. Thermal goggles\n\
-	 41. Parachute",\
+	 12. Vibrator\n\
+	 14. Flowers\n\
+	 15. Cane\n\
+	 16. Grenade\n\
+	 17. Molotov\n\
+	 18. Tear Gas\n\
+	 22. Pistol\n\
+	 23. Silenced Pistol\n\
+	 24. Desert Eagle\n\
+	 25. Shotgun\n\
+	 26. Sawn-off Shotgun\n\
+	 27. Combat Shotgun\n\
+	 28. Micro-UZI\n\
+	 29. MP5\n\
+	 30. AK-47\n\
+	 31. M4A1\n\
+	 32. Tec-9\n\
+	 33. Country rifle\n\
+	 34. Sniper rifle\n\
+	 35. RPG\n\
+	 36. Missle Launcher\n\
+	 37. Flame Thrower\n\
+	 38. Minigun\n\
+	 39. Satchel Charge\n\
+	 40. Detonator\n\
+	 41. Spray Paint\n\
+	 42. Fire Extinguisher\n\
+	 43. Camera\n\
+	 44. Night Vision goggles\n\
+	 45. Thermal goggles\n\
+	 46. Parachute",\
 	 "Ok", "Cancel");
 	return 1;
 }

@@ -8,29 +8,24 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 {
 	switch(dialogid)
 	{
-	    case WEAPON_DIALOG:
-	        {
-	            if(response==1)
-	            {
-		            new weaponID;
-		            new targetID;
-					targetID=GetPVarInt(playerid, "targetid");
-		            switch(listitem)
-		            {
-		                case 0 .. 9: weaponID=listitem+1;
-		                case 10: weaponID=listitem+2;
-		                case 11 .. 15: weaponID=listitem+3;
-		                case 16 .. 40: weaponID=listitem+6;
-		            }
-		            GivePlayerWeapon(targetID, weaponID, 100);
-		            format(SCMstring, sizeof(SCMstring), "[{f24faa}SERVER{ffffff}] You have given %s a %s", GetPName(targetID), GetWepName(weaponID));
-		            SendClientMessage(playerid, -1, SCMstring);
-		            format(SCMstring, sizeof(SCMstring), "[{f24faa}SERVER{ffffff}] You were given a %s by %s", GetWepName(weaponID), GetPName(playerid));
-		            SendClientMessage(targetID, -1, SCMstring);
-				}
-				DeletePVar(playerid, "targetid");
-	        }
-	        // space for more dialog cases...
+		case WEAPON_DIALOG:
+		{
+			if(response==1)
+			{
+				new targetID;
+				targetID=GetPVarInt(playerid, "targetid");
+				if(strval(inputtext)<1||strval(inputtext)>46) SendClientMessage(playerid, -1, "[{fa1107}WARNING{ffffff}] Invalid Input");
+				switch(strval(inputtext))
+					case 11,13,19,20,21: SendClientMessage(playerid, -1, "[{fa1107}WARNING{ffffff}] Invalid Input");
+				if(!IsPlayerConnected(targetID))
+					GivePlayerWeapon(targetID, strval(inputtext), 100);
+				new temp[5];
+				valstr(temp, targetID);
+				return cmd_giveweapon(playerid, temp);
+			}
+			DeletePVar(playerid, "targetid");
+		}
+		//space for more dialogID cases//
 	}
 	return 1;
 }
