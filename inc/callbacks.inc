@@ -21,7 +21,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					GivePlayerWeapon(targetID, strval(inputtext), 100);
 				new temp[5];
 				valstr(temp, targetID);
-				return cmd_giveweapon(playerid, temp);
+				cmd_giveweapon(playerid, temp);
 			}
 			DeletePVar(playerid, "targetid");
 		}
