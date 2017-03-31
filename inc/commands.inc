@@ -114,6 +114,7 @@ CMD:god(playerid, params[])
 	           
 	           	GodMode[playerid] = 0;
 	            format(SCMstring, sizeof(SCMstring), "[{fa1107}AdmCmd{ffffff}] You have disabled your GodMode");
+	            SendClientMessage(playerid, -1, SCMstring);
 	            SetPlayerHealth(playerid, 100);	           
 				KillTimer(GodHealthCheck(playerid));
 	            return 1;
@@ -121,7 +122,8 @@ CMD:god(playerid, params[])
 		case 0:
 		    {
 	           	GodMode[playerid] = 1;
-	            format(SCMstring, sizeof(SCMstring), "[{fa1107}AdmCmd{ffffff}] You have disabled your GodMode");
+	            format(SCMstring, sizeof(SCMstring), "[{fa1107}AdmCmd{ffffff}] You have enabled your GodMode");
+	            SendClientMessage(playerid, -1, SCMstring);
 	            SetPlayerHealth(playerid, 1000);
 				SetTimerEx("GodHealthCheck", 3000, false, "i", playerid);
 	            return 1;
