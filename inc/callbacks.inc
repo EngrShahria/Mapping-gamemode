@@ -26,13 +26,16 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 }
 
 
-forward GodHealthCheck(playerid);
-public GodHealthCheck(playerid)
+public OnPlayerUpdate(playerid)
 {
-	new Float: iHP;
-	GetPlayerHealth(playerid, iHP);	
-	if(iHP < 100)
-	{
-		SetPlayerHealth(playerid, iHP+1000);
+
+	if(GodMode[playerid] == 1){
+		new Float: iHP;
+		GetPlayerHealth(playerid, iHP);	
+		if(iHP < 100)
+		{
+			SetPlayerHealth(playerid, iHP+1000);
+		}
 	}
+	return 1;
 }

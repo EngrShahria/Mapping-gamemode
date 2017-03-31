@@ -116,7 +116,6 @@ CMD:god(playerid, params[])
 	            format(SCMstring, sizeof(SCMstring), "[{fa1107}AdmCmd{ffffff}] You have disabled your GodMode");
 	            SendClientMessage(playerid, -1, SCMstring);
 	            SetPlayerHealth(playerid, 100);	           
-				KillTimer(GodHealthCheck(playerid));
 	            return 1;
         	}
 		case 0:
@@ -125,7 +124,6 @@ CMD:god(playerid, params[])
 	            format(SCMstring, sizeof(SCMstring), "[{fa1107}AdmCmd{ffffff}] You have enabled your GodMode");
 	            SendClientMessage(playerid, -1, SCMstring);
 	            SetPlayerHealth(playerid, 1000);
-				SetTimerEx("GodHealthCheck", 3000, false, "i", playerid);
 	            return 1;
         	}
     }
@@ -142,14 +140,25 @@ CMD:giveweapon( playerid, params[] )
     if(sscanf(params, "u", targetID)) return SendClientMessage(playerid, -1, "[{fa1107}USAGE{ffffff}] /giveweapon <targetID>");
     if(!IsPlayerConnected(targetID)) return SendClientMessage(playerid, -1, "[{fa1107}WARNING{ffffff}] Could not find player.");
     SetPVarInt(playerid, "targetid", targetID);
-	SendClientMessage(playerid, -1, "1: Brass Knuckles 2: Golf Club 3: Nite Stick 4: Knife 5: Baseball Bat 6: Shovel 7: Pool Cue 8: Katana 9: Chainsaw");
-	SendClientMessage(playerid, -1, "10: Purple Dildo 11: Small White Vibrator 12: Large White Vibrator 13: Silver Vibrator 14: Flowers 15: Cane 16: Frag Grenade");
-	SendClientMessage(playerid, -1, "17: Tear Gas 18: Molotov Cocktail 19: Vehicle Missile 20: Hydra Flare 21: Jetpack 22: 9mm 23: Silenced 9mm 24: Desert Eagle 25: Shotgun");
-	SendClientMessage(playerid, -1, "26: Sawnoff Shotgun 27: SPAS-12 28: Micro SMG (Mac 10) 29: SMG (MP5) 30: AK-47 31: M4 32: Tec9 33: Rifle");
-	SendClientMessage(playerid, -1, "25: Shotgun 34: Sniper Rifle 35: Rocket Launcher 36: HS Rocket Launcher 37: Flamethrower 38: Minigun 39: Satchel Charge");
-	SendClientMessage(playerid, -1, "40: Detonator 41: Spraycan 42: Fire Extinguisher 43: Camera 44: Nightvision Goggles 45: Infared Goggles 46: Parachute");
+    SendClientMessage(playerid, COLOR_GREEN, "====================================================================================================================");
+	SendClientMessage(playerid, COLOR_GRAD1, "1: Brass Knuckles 2: Golf Club 3: Nite Stick 4: Knife 5: Baseball Bat 6: Shovel 7: Pool Cue 8: Katana 9: Chainsaw");
+	SendClientMessage(playerid, COLOR_GRAD1, "10: Purple Dildo 11: Small White Vibrator 12: Large White Vibrator 13: Silver Vibrator 14: Flowers 15: Cane 16: Frag Grenade");
+	SendClientMessage(playerid, COLOR_GRAD1, "17: Tear Gas 18: Molotov Cocktail 19: Vehicle Missile 20: Hydra Flare 21: Jetpack 22: 9mm 23: Silenced 9mm 24: Desert Eagle 25: Shotgun");
+	SendClientMessage(playerid, COLOR_GRAD1, "26: Sawnoff Shotgun 27: SPAS-12 28: Micro SMG (Mac 10) 29: SMG (MP5) 30: AK-47 31: M4 32: Tec9 33: Rifle");
+	SendClientMessage(playerid, COLOR_GRAD1, "25: Shotgun 34: Sniper Rifle 35: Rocket Launcher 36: HS Rocket Launcher 37: Flamethrower 38: Minigun 39: Satchel Charge");
+	SendClientMessage(playerid, COLOR_GRAD1, "40: Detonator 41: Spraycan 42: Fire Extinguisher 43: Camera 44: Nightvision Goggles 45: Infared Goggles 46: Parachute");
+	SendClientMessage(playerid, COLOR_GREEN, "====================================================================================================================");
     format(SCMstring, sizeof(SCMstring), "Giving weapon to %s", GetPName(targetID));
     ShowPlayerDialog(playerid, WEAPON_DIALOG, DIALOG_STYLE_INPUT, SCMstring, "Put weapon ID", "Ok", "Cancel");
 
 	return 1;
 }
+
+
+CMD:loadmap( playerid, params[] )
+{
+	new mapstrg[124];
+	if(!IsPlayerAdmin(playerid)) return SendClientMessage(playerid, -1, "[{fa1107}WARNING{ffffff}] You are not authorized to use this command");	//Checking if the player is a RCON admin or not//
+	
+	return 1;
+} 

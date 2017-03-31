@@ -27,10 +27,12 @@ WHAT IT DOES? : You can test any mapping code by yourself, anytime without GMX t
 
 	SCRIPT'S CORE INCLUDS
 */
+#include "./inc/colors.inc"
 #include "./inc/core.pwn"
 #include "./inc/commands.inc"
 #include "./inc/callbacks.inc"
 #include "./inc/stocks.inc"
+
 
 
 
@@ -53,9 +55,7 @@ public OnGameModeExit()
 
 public OnPlayerRequestClass(playerid, classid)
 {
-  SetPlayerPos(playerid, -2299.2156, -1644.6145, 483.6988);
-  SetPlayerCameraPos(playerid, -2299.2156, -1644.6145, 483.6988);
-  SetPlayerCameraLookAt(playerid, -2299.2156, -1644.6145, 483.6988);
+  SpawnPlayer(playerid);
   return 1;
 }
 
