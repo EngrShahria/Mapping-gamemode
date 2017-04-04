@@ -85,3 +85,33 @@ stock GetWepName(weaponid)
 	return Wep_NAme;
 }
 
+
+
+new Float:slX, Float:slY, Float:slZ;
+new Float:pcX, Float:pcY, Float:pcZ;
+new Float:mX, Float: mY;
+
+dn(playerid) //Go down
+{
+    GetPlayerPos(playerid, slX, slY, slZ);
+    SetPlayerPos(playerid, slX, slY, slZ-2);
+    return 1;
+}
+
+up(playerid) // Go up
+{
+    GetPlayerPos(playerid, slX, slY, slZ);
+    SetPlayerPos(playerid, slX, slY, slZ+5);
+    return 1;
+}
+
+
+goforward(playerid) // Go Left [ Left Turn]
+{
+    GetPlayerCameraPos(playerid, slX, slY, slZ);
+    GetPlayerCameraFrontVector(playerid, pcX, pcY, pcZ);
+    mX = slX + (pcX*10);
+    mY = slY + (pcY*10);
+    SetPlayerPos(playerid, mX, mY, slZ);
+    return 1;
+}

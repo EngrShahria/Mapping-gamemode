@@ -130,7 +130,15 @@ CMD:god(playerid, params[])
     return 1;
 }
 
+CMD:mypos( playerid, params[] )
+{
+	new Float:pos[3];
+	GetPlayerPos(playerid, pos[0], pos[1], pos[2]);
+	format(SCMstring, sizeof(SCMstring), "X: %f | Y: %f | Z: %f ", pos[0], pos[1], pos[2]);
+	SendClientMessage(playerid, -1, SCMstring);
+	return 1;
 
+}
 
 
 CMD:giveweapon( playerid, params[] )
@@ -173,3 +181,31 @@ CMD:flymode( playerid, params[] )
 	else FlyMode(playerid);
 	return 1;
 }
+
+CMD:go( playerid, params[] )
+{
+	if(!IsPlayerAdmin(playerid)) return SendClientMessage(playerid, -1, "[{fa1107}WARNING{ffffff}] You are not authorized to use this command");
+
+	if(isnull(params))
+	{
+
+		SendClientMessage(playerid, -1, "USAGE: /up [ direction ]");
+		SendClientMessage(playerid, -1, "General locations: up, dw , fd ( Forward )");
+		SendClientMessage(playerid, COLOR_GRAD1, "fd ( forward) = Just point your camera toward anywhere and do /go fd for move");
+	}
+
+	if(strcmp(params, "up", true) == 0)
+	{
+		up(playerid);
+	}
+	if(strcmp(params, "dn", true) == 0)
+	{
+		dn(playerid);
+	}
+	if(strcmp(params, "fd", true) == 0)
+	{
+		goforward(playerid);
+	}
+	return 1;
+}
+
