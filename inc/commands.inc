@@ -103,33 +103,6 @@ CMD:godmode( playerid, params[] )
 	return 1;
 }
 
-
-CMD:god(playerid, params[])
-{
-    if(!IsPlayerAdmin(playerid)) return SendClientMessage(playerid, -1, "[{fa1107}WARNING{ffffff}] You are not authorized to use this command");	//Checking if the player is a RCON admin or not//
-	switch(GodMode[playerid])
-	{
-	    case 1:
-	        {
-	           
-	           	GodMode[playerid] = 0;
-	            format(SCMstring, sizeof(SCMstring), "[{fa1107}AdmCmd{ffffff}] You have disabled your GodMode");
-	            SendClientMessage(playerid, -1, SCMstring);
-	            SetPlayerHealth(playerid, 100);	           
-	            return 1;
-        	}
-		case 0:
-		    {
-	           	GodMode[playerid] = 1;
-	            format(SCMstring, sizeof(SCMstring), "[{fa1107}AdmCmd{ffffff}] You have enabled your GodMode");
-	            SendClientMessage(playerid, -1, SCMstring);
-	            SetPlayerHealth(playerid, 1000);
-	            return 1;
-        	}
-    }
-    return 1;
-}
-
 CMD:mypos( playerid, params[] )
 {
 	new Float:pos[3];
