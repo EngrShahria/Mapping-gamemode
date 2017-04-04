@@ -15,13 +15,13 @@ CMD:gotocoords( playerid, params[] )
 		Float:z;
 	
 	//Detects if player use /gotocoords x y z or else.
-	if(sscanf(params, "ddd", x, y, z)) return SendClientMessage(playerid, -1, "/gotocoords [X] [Y] [Z]");
+	if(sscanf(params, "fff", x, y, z)) return SendClientMessage(playerid, -1, "/gotocoords [X] [Y] [Z]");
 	//This command is only able for RCON admin.
 	if(!IsPlayerAdmin(playerid)) return SendClientMessage(playerid, -1, "[{fa1107}WARNING{ffffff}] You are not authorized to use this command");
 	//Sets player's position to the given coords.
 	SetPlayerPos(playerid, x, y, z);
 	//Formate for SendClientMessage.
-	format(SCMstring, sizeof(SCMstring), "You have teleported to X = %d  Y= %d  Z= %d  ", x, y, z);
+	format(SCMstring, sizeof(SCMstring), "You have teleported to X = %f Y= %f  Z= %f  ", x, y, z);
 	SendClientMessage(playerid, -1, SCMstring);
 	return 1;
 }
@@ -157,8 +157,19 @@ CMD:giveweapon( playerid, params[] )
 
 CMD:loadmap( playerid, params[] )
 {
-	new mapstrg[124];
+	//new mapstrg[124];
 	if(!IsPlayerAdmin(playerid)) return SendClientMessage(playerid, -1, "[{fa1107}WARNING{ffffff}] You are not authorized to use this command");	//Checking if the player is a RCON admin or not//
-	
+
+	//SendRconCommand()
 	return 1;
 } 
+
+//FLYMODE
+CMD:flymode( playerid, params[] )
+{
+	if(!IsPlayerAdmin(playerid)) return SendClientMessage(playerid, -1, "[{fa1107}WARNING{ffffff}] You are not authorized to use this command");	//Checking if the player is a RCON admin or not//
+	// Place the player in and out of edit mode
+	if(GetPVarType(playerid, "FlyMode")) CancelFlyMode(playerid);
+	else FlyMode(playerid);
+	return 1;
+}

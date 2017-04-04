@@ -21,6 +21,9 @@ WHAT IT DOES? : You can test any mapping code by yourself, anytime without GMX t
 #include <streamer>
 #include <sscanf2>
 #include <ZCMD>
+#include <YSI\y_hooks>
+
+
 
 
 /*
@@ -32,6 +35,7 @@ WHAT IT DOES? : You can test any mapping code by yourself, anytime without GMX t
 #include "./inc/commands.inc"
 #include "./inc/callbacks.inc"
 #include "./inc/stocks.inc"
+#include "./inc/flymode.inc"
 
 
 
@@ -45,6 +49,8 @@ public OnGameModeInit()
 {
 
   AddPlayerClass(0, -2299.2156, -1644.6145, 483.6988, 269.1425, 0, 0, 0, 0, 0, 0);
+
+  SendRconCommand("./gamemodes/mapeditor");
   return 1;
 }
 
